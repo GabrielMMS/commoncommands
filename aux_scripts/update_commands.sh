@@ -12,7 +12,7 @@ function update_commands_usage {
 
 function update_commands {
 
-	local CC_GIT="https://github.com/GabrielMMS/commoncommands.git"
+	local CC_GIT="git@github.com:GabrielMMS/commoncommands.git"
 	local OPT=
 
 	while [ "$1" != "" ]; do
