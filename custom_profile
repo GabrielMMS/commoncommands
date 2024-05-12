@@ -1,0 +1,25 @@
+
+
+export HISTFILESIZE=100000000
+export HISTSIZE=100000000
+# Avoid duplicates
+export HISTCONTROL=ignoredups:erasedups
+export SHELL_SESSION_HISTORY=0
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+
+# After each command, append to the history file and reread it
+export ROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\[\033[00m\] $ "
+export CLICOLOR=1
+export LSCOLORS=gxcxcxdxbxexxxbxbxacad
+
+
+
+alias g='git'
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias l='ls -lah'
+alias lt='ls -lat'
+alias k='clear;'
+alias gst='git status'
