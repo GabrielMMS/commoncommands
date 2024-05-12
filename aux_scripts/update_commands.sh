@@ -7,6 +7,7 @@ function update_commands_usage {
     echo "   Options:"
     echo "  	-d, --download_files     Download the 'customcommands.sh' file"
     echo "  	-s, --send_files         Send the 'customcommands.sh' file to repository"
+	echo "  	--personal               Change to personal repo (congigured in '~/.ssh/config')"
     echo "  	-h, --help               Command help"
 }
 
@@ -20,6 +21,8 @@ function update_commands {
     	    -d | --download_files ) OPT=1
     	                            ;;
     	    -s | --send_files )    	OPT=2
+    	                            ;;
+    	    --personal )    		CC_GIT="git@$1:GabrielMMS/commoncommands.git"
     	                            ;;
     	    -h | --help )           update_commands_usage
     	                            return;
