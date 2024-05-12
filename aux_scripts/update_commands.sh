@@ -7,7 +7,6 @@ function update_commands_usage {
     echo "   Options:"
     echo "  	-d, --download_files     Download the 'customcommands.sh' file"
     echo "  	-s, --send_files         Send the 'customcommands.sh' file to repository"
-    echo "  	--ssh                    Download repository through SSH (must have a previously registered key)"
     echo "  	-h, --help               Command help"
 }
 
@@ -18,17 +17,15 @@ function update_commands {
 
 	while [ "$1" != "" ]; do
     	case $1 in
-    	    -d | --download_files )   OPT=1
-    	                            	;;
-    	    -s | --send_files )    		OPT=2
-    	                            	;;
-    	    --ssh )                   CC_GIT="git@github.com:GabrielMMS/commoncommands.git"
-    	                            	;;
-    	    -h | --help )           	update_commands_usage
-    	                            	return;
-    	                            	;;
-    	    * )                     	update_commands_usage
-    	                            	return;
+    	    -d | --download_files ) OPT=1
+    	                            ;;
+    	    -s | --send_files )    	OPT=2
+    	                            ;;
+    	    -h | --help )           update_commands_usage
+    	                            return;
+    	                            ;;
+    	    * )                     update_commands_usage
+    	                            return;
     	esac
     	shift
 	done
@@ -57,7 +54,7 @@ function update_commands {
 		git commit -m "$COMMIT_MESSAGE" 
 		git push origin $TIMESTAMP
 
-		git checkout master
+		git checkout main
 
 		cd $PWD_PATH
 
@@ -79,6 +76,7 @@ function update_commands {
 			echo "-------- Clonig 'customcommands.git' in $COMMANDS_FOLDER"
 			git clone $CC_GIT $COMMANDS_FOLDER
 		else
+			echo "-------- Aborting."
 			return
 		fi
 	fi
