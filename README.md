@@ -4,7 +4,7 @@ Este projeto tem como finalidade reunir e facilitar comandos criados no bash.
 
 Para baixar e acessar a primeira vez, execute o seguinte código no Terminal:
 
-> Tenha em mente que serão sobrescritos o arquivo `.inputrc` e uma possível pasta `.commands` (caso estes exitam)
+> Tenha em mente que será sobrescrito o arquivo `.inputrc` e uma possível pasta `.commands` (caso estes existam)
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://gitlab.com/c8273/commoncommands/-/raw/master/install.sh)"
