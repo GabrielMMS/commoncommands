@@ -22,7 +22,8 @@ function update_commands {
     	                            ;;
     	    -s | --send_files )    	OPT=2
     	                            ;;
-    	    --personal )    		CC_GIT="git@$1:GabrielMMS/commoncommands.git"
+    	    --personal )    		shift
+			                        CC_GIT="git@$1:GabrielMMS/commoncommands.git"
     	                            ;;
     	    -h | --help )           update_commands_usage
     	                            return;
@@ -40,7 +41,7 @@ function update_commands {
 			git clone $CC_GIT $COMMANDS_FOLDER
 		fi
 
-		echo "-------- Sending changes"
+		echo "-------- Sending changes on '$CC_GIT'"
 		echo "Enter the commit message (if it's empty, a dafault message will be created):"
 		read -r COMMIT_MESSAGE
 
@@ -52,6 +53,7 @@ function update_commands {
 		cd $COMMANDS_FOLDER
 
 		TIMESTAMP=$(date +%s)
+		git remote set-url origin $CC_GIT
 		git checkout -b $TIMESTAMP
 		git add .
 		git commit -m "$COMMIT_MESSAGE" 
@@ -61,7 +63,7 @@ function update_commands {
 
 		cd $PWD_PATH
 
-		#open https://github.com/GabrielMMS/commoncommands/-/merge_requests/new?merge_request%5Bsource_branch%5D=${TIMESTAMP}
+		open https://github.com/GabrielMMS/commoncommands/pull/new/${TIMESTAMP}
 		return;
 	fi
 
