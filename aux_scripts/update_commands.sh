@@ -63,7 +63,7 @@ function update_commands {
 
 		cd $PWD_PATH
 
-		open https://github.com/GabrielMMS/commoncommands/pull/new/${TIMESTAMP}
+		echo "To aply the changes, create a new PR on https://github.com/GabrielMMS/commoncommands/pull/new/${TIMESTAMP}"
 		return;
 	fi
 
