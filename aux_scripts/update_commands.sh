@@ -101,7 +101,7 @@ function update_commands {
 
 	if ! grep -q "source $HOME/.commands/customcommands.sh" $HOME/.bash_profile; then
 		echo "-------- Add 'customcommands.sh' reference in .bash_profile"
-	 	echo -e "\nsource $HOME/.commands/customcommands.sh" >> $HOME/.bash_profile
+	 	echo $'\nsource $HOME/.commands/customcommands.sh' >> $HOME/.bash_profile
 	fi
 
 	echo "-------- Reload files"
