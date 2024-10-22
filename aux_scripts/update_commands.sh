@@ -23,6 +23,11 @@ function update_commands {
     	    -s | --send_files )    	OPT=2
     	                            ;;
     	    --personal )    		shift
+									if [[ $1 == '' ]]; then
+										echo $'The --personal param must be have an value, as configured on ~/.ssh/config.\n'
+										update_commands_usage
+										return;
+									fi
 			                        CC_GIT="git@$1:GabrielMMS/commoncommands.git"
     	                            ;;
     	    -h | --help )           update_commands_usage
